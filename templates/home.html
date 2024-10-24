@@ -1,0 +1,87 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FWI Calculation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full my-10">
+        <h1 class="text-2xl font-bold mb-6 text-center">FWI Calculation</h1>
+        <form action="{{ url_for('predict_datapoint') }}" method="POST">
+            <!-- Temperature -->
+            <div class="mb-4">
+                <label for="temperature" class="block text-gray-700 font-semibold mb-2">Temperature (°C):</label>
+                <input type="text" id="temperature" name="temperature" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            
+            <!-- RH (Relative Humidity) -->
+            <div class="mb-4">
+                <label for="rh" class="block text-gray-700 font-semibold mb-2">Relative Humidity (%):</label>
+                <input type="text" id="rh" name="rh" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            
+            <!-- Wind Speed (Ws) -->
+            <div class="mb-4">
+                <label for="ws" class="block text-gray-700 font-semibold mb-2">Wind Speed (km/h):</label>
+                <input type="text" id="ws" name="ws" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            
+            <!-- Rain -->
+            <div class="mb-4">
+                <label for="rain" class="block text-gray-700 font-semibold mb-2">Rain (mm):</label>
+                <input type="text" id="rain" name="rain" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <!-- FFMC -->
+            <div class="mb-4">
+                <label for="ffmc" class="block text-gray-700 font-semibold mb-2">FFMC:</label>
+                <input type="text" id="ffmc" name="ffmc" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <!-- DMC -->
+            <div class="mb-4">
+                <label for="dmc" class="block text-gray-700 font-semibold mb-2">DMC:</label>
+                <input type="text" id="dmc" name="dmc" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <!-- ISI -->
+            <div class="mb-4">
+                <label for="isi" class="block text-gray-700 font-semibold mb-2">ISI:</label>
+                <input type="text" id="isi" name="isi" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+
+            <!-- Classes (Dropdown) -->
+            <div class="mb-4">
+                <label for="classes" class="block text-gray-700 font-semibold mb-2">Classes:</label>
+                <select id="classes" name="classes" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="1">Fire</option>
+                    <option value="0">Not Fire</option>
+                </select>
+            </div>
+
+            <!-- Region -->
+
+             <div class="mb-4">
+                <label for="region" class="block text-gray-700 font-semibold mb-2">Region:</label>
+                <select id="region" name="region" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                    <option value="0">Bejaia region</option>
+                    <option value="1">Sidi-Bel Abbes Region</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+                <button type="submit" class="bg-blue-500 text-white font-semibold px-6 py-2 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    Calculate FWI
+                </button>
+            </div>
+        </form>
+        <h1>
+            The FWI predicted is:{{results}}
+        </h1>
+        
+    </div>
+</body>
+</html>
